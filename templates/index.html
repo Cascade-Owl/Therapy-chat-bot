@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapy Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='bot.jpg') }}" class="header-avatar" alt="Bot Profile">
+            
+            <div class="header-text">
+                <h1>"Ya need to take ya med" Ahhh chatbot</h1>
+                <p>Culturued Therapist chatbot</p>
+            </div>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            
+            {% for msg in chat_history %}
+                <div class="message {{ msg.role }}">
+                    {{ msg.text }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <form class="input-area" method="POST">
+            <input type="text" name="user_message" placeholder="Type your message..." required autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        var chatBox = document.getElementById("chatBox");
+        chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
+
+</body>
+</html>
