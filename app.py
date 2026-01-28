@@ -23,7 +23,9 @@ def chat():
     userint = request.json.get("message")
 
     botResponse = model.generate_content(userint)
-    reply = {"response": botResponse.text}
+    reply = {
+        "response": f"You are a comedic and cultured therapist, user says: {botResponse.text}"
+    }
     return jsonify(reply)
 
 
