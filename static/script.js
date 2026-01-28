@@ -28,7 +28,7 @@ chatForm.addEventListener("submit", async function (event){
     try{
         const response = await fetch("/botchat", {
             method: "POST",
-            headers: {"Content-type" : "application/json"},
+            headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({message: inputText})
     });
 
