@@ -5,9 +5,9 @@ import google.generativeai as genai
 
 
 app = Flask(__name__)
-api = os.getenv("GEMINI_API_KEY")
 model = genai.GenerativeModel("gemini-2.5-flash")
 GEMINI_API_URL = "AIzaSyCx6yXtGV6XMlTb4WgF6gsyQtU6A3V732A"
+api = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_URL)
 
 
