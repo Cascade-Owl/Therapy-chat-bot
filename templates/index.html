@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="chat-box" id="chatBox">
+        <div class="chat-bubble" id="chatBubble">
             
             {% for msg in chat_history %}
                 <div class="message {{ msg.role }}">
@@ -28,16 +28,13 @@
 
         </div>
 
-        <form class="input-area" method="POST">
-            <input type="text" name="user_message" placeholder="Type your message..." required autocomplete="off">
+        <form class="input-area" id="chatForm" method="POST">
+            <input type="text" id="userInput" name="user_message" placeholder="Type your message..." required autocomplete="off">
             <button type="submit">Send</button>
         </form>
     </div>
 
-    <script>
-        var chatBox = document.getElementById("chatBox");
-        chatBox.scrollTop = chatBox.scrollHeight;
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

@@ -48,7 +48,7 @@ body {
     font-size: 13px;
 }
 
-.chat-box {
+.chat-bubble {
     flex-grow: 1; 
     padding: 20px;
     overflow-y: auto; 
