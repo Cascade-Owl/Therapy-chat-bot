@@ -17,13 +17,13 @@ function appendMessage(sender, text) {
 chatForm.addEventListener("submit", async function (event){
     event.preventDefault();
 
-    let inputText = userInput.value;
+    const inputText = userInput.value;
 
     appendMessage("user", inputText);
 
     if (!(inputText)) return;
 
-    inputText = "";
+    userInput.value = "";
 
     try{
         const response = await fetch("/botchat", {
