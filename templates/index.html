@@ -18,15 +18,7 @@
             </div>
         </div>
 
-        <div class="chat-box" id="chatBox">
-            
-            {% for msg in chat_history %}
-                <div class="message {{ msg.role }}">
-                    {{ msg.text }}
-                </div>
-            {% endfor %}
-
-        </div>
+        <div class="chat-box" id="chatBox"></div>
 
         <form class="input-area" id="chatForm" method="POST">
             <input type="text" id="userInput" name="user_message" placeholder="Type your message..." required autocomplete="off">
