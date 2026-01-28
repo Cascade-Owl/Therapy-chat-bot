@@ -1,4 +1,4 @@
-const chatBubble = document.getElementById("chatBubble");
+const chatBox = document.getElementById("chatBox");
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 
@@ -9,9 +9,9 @@ function appendMessage(sender, text) {
 
     chatDiv.innerText = text;
 
-    chatBubble.appendChild(chatDiv);
+    chatBox.appendChild(chatDiv);
 
-    chatDiv.scrollTop = chatDiv.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 chatForm.addEventListener("submit", async function (event){
