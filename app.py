@@ -22,8 +22,8 @@ def home():
 def chat():
     userint = request.json.get("message")
 
-    response = model.generate_content(userint)
-    reply = {"response": response.text}
+    botResponse = model.generate_content(userint)
+    reply = {"response": botResponse.text}
     return jsonify(reply)
 
 
