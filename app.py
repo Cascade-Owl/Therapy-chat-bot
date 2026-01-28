@@ -22,10 +22,10 @@ def home():
 def chat():
     userint = request.json.get("message")
 
-    botResponse = model.generate_content(userint)
-    reply = {
-        "response": f"You are a comedic and cultured therapist, user says: {botResponse.text}"
-    }
+    botResponse = model.generate_content(
+        f"You are a comedic and cultured therapist, user says: {userint}"
+    )
+    reply = {"response": botResponse.text}
     return jsonify(reply)
 
 
