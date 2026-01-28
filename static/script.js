@@ -32,9 +32,9 @@ chatForm.addEventListener("submit", async function (event){
             body: JSON.stringify({message: inputText})
     });
 
-        const responseData = await response.json();
+        const data = await response.json();
 
-        appendMessage("bot", responseData);
+        appendMessage("bot", data.response);
     }
 
     catch(error){
