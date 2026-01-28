@@ -1,14 +1,16 @@
 from flask import Flask, request, url_for, render_template, jsonify
+from dotenv import load_dotenv
 import requests
 import os
 import google.generativeai as genai
 
+load_dotenv()
 
 app = Flask(__name__)
-model = genai.GenerativeModel("gemini-2.5-flash")
-GEMINI_API_URL = "AIzaSyCx6yXtGV6XMlTb4WgF6gsyQtU6A3V732A"
-api = os.getenv("GEMINI_API_KEY")
+
+GEMINI_API_URL = os.getenv("GEMINI_API_URL")
 genai.configure(api_key=GEMINI_API_URL)
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 
 @app.route("/")
@@ -20,8 +22,8 @@ def home():
 def chat():
     userint = request.json.get("message")
 
-    botResponse = model.generate_content(userint)
-    reply = {"response": botResponse.text}
+    response = model.generate_content(userint)
+    reply = {"response": response.text}
     return jsonify(reply)
 
 

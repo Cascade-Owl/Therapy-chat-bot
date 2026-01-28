@@ -38,6 +38,6 @@ chatForm.addEventListener("submit", async function (event){
     }
 
     catch(error){
-        appendMessage("bot", error);
+        appendMessage("bot", "Error: bot encountered an unknown error");
     }
 });
