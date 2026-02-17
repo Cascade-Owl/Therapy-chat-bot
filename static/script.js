@@ -7,11 +7,21 @@ function appendMessage(sender, text) {
 
     chatDiv.classList.add("message", sender);
 
-    chatDiv.innerText = text;
+    chatDiv.innerHTML = DOMPurify.sanitize(marked.parse(text));
 
     chatBox.appendChild(chatDiv);
 
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function typingBubble(){
+    const typingDiv = document.createElement("div");
+    typingDiv.classList.add("message", "typing", "bot");
+    typingDiv.innerText = "AI is typing...";
+    chatBox.appendChild(typingDiv)
+    chatBox.scrollTop = chatBox.scrollHeight;
+    
+    return typingDiv;
 }
 
 chatForm.addEventListener("submit", async function (event){
@@ -25,6 +35,8 @@ chatForm.addEventListener("submit", async function (event){
 
     userInput.value = "";
 
+    typingDiv = typingBubble();
+
     try{
         const response = await fetch("/botchat", {
             method: "POST",
@@ -33,6 +45,8 @@ chatForm.addEventListener("submit", async function (event){
     });
 
         const data = await response.json();
+
+        chatBox.removeChild(typingDiv);
 
         appendMessage("bot", data.response);
     }
